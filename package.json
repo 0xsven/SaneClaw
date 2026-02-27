@@ -1,0 +1,16 @@
+{
+  "name": "agent-functions",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Barebones TypeScript monorepo for agent-functions prototypes",
+  "packageManager": "pnpm@10.6.2",
+  "scripts": {
+    "build": "pnpm -r build",
+    "typecheck": "pnpm build && pnpm -r typecheck",
+    "dev": "pnpm --filter @agent-functions/examples dev"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "typescript": "^5.9.2"
+  }
+}

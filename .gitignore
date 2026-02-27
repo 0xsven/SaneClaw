@@ -1,0 +1,19 @@
+node_modules/
+
+# Build outputs
+dist/
+*.tsbuildinfo
+
+# Local package manager/runtime caches
+.corepack/
+.pnpm-store/
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# OS/editor files
+.DS_Store
+.idea/
+.vscode/
