@@ -1,16 +1,24 @@
 {
-  "name": "@agent-functions/runner",
+  "name": "@agent-functions/llm",
   "version": "0.0.0",
   "private": true,
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
     "@agent-functions/core": "workspace:*",
-    "@agent-functions/llm": "workspace:*"
+    "@ai-sdk/anthropic": "^2.0.0",
+    "@ai-sdk/openai": "^2.0.0",
+    "ai": "^5.0.0"
   }
 }

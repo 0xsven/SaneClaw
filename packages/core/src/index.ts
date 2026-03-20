@@ -1,20 +1,28 @@
-export type AgentTrigger = {
-  event: string;
-};
-
 export type AgentTool = {
   name: string;
   description?: string;
+  inputSchema?: Record<string, unknown>;
+  execute: (args: unknown) => Promise<unknown> | unknown;
 };
 
-export type AgentRunContext = {
-  trigger: AgentTrigger;
+export type AgentInput = {
+  systemMessage: string;
+  userMessage: string;
 };
 
-export type AgentFunction<TInput = unknown> = {
+export type AgentBeforeRunContext = {
+  agentId: string;
+  meta?: Record<string, unknown>;
+};
+
+export type AgentFunction<TBeforeInput = AgentInput> = {
   id: string;
   description?: string;
-  trigger: AgentTrigger;
+  model?: string;
+  maxSteps?: number;
   tools: AgentTool[];
-  run: (input: TInput, context: AgentRunContext) => Promise<void> | void;
+  beforeRun?: (
+    input: TBeforeInput,
+    context: AgentBeforeRunContext
+  ) => Promise<AgentInput | false> | AgentInput | false;
 };
